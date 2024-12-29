@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { Link } from "react-router-dom"; // Importando o componente Link do React Router
+
 const Header = () => {
   const [nav, setNav] = useState(false);
 
@@ -7,10 +9,11 @@ const Header = () => {
     setNav(!nav);
   };
 
-  //TODO: Add the navigation items (route)
   const navItems = [
-    { id: 1, text: "Home" },
-    { id: 2, text: "Cat" }
+    { id: 1, text: "Home", path: "/" }, 
+    { id: 2, text: "Cats", path: "/cats" },
+    { id: 3, text: "News", path: "/news" },
+    { id: 4, text: "HP", path: "/hp" }
   ];
 
   return (
@@ -23,9 +26,9 @@ const Header = () => {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className="p-4 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
+              className="p-4 hover:bg-[#3b82f6] rounded-xl m-2 cursor-pointer duration-300 hover:text-black"
             >
-              {item.text}
+              <Link to={item.path}>{item.text}</Link> 
             </li>
           ))}
         </ul>
@@ -44,7 +47,7 @@ const Header = () => {
           }
         >
           {/* Mobile Logo */}
-          <h1 className="w-full text-3xl font-bold text-[#00df9a] m-4">
+          <h1 className="w-full text-3xl font-bold text-[#3b82f6] m-4">
             CATS
           </h1>
 
@@ -52,9 +55,9 @@ const Header = () => {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className="p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600"
+              className="p-4 border-b rounded-xl hover:bg-[#3b82f6] duration-300 hover:text-black cursor-pointer border-gray-600"
             >
-              {item.text}
+              <Link to={item.path}>{item.text}</Link>
             </li>
           ))}
         </ul>

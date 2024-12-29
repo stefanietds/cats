@@ -1,7 +1,21 @@
 import axios from "axios";
 
-const api = axios.create({
+const apiKey = process.env.REACT_API_KEY_NEWS;
+
+const catApi = axios.create({
   baseURL: "https://api.thecatapi.com/v1/images",
 });
 
-export default api;
+const newsApi = axios.create({
+  baseURL: "https://newsapi.org/v2",
+  headers: {
+    Authorization: `apiKey ${apiKey}`,
+  }
+});
+
+const hpApi = axios.create({
+  baseURL: "https://potterapi-fedeperin.vercel.app/pt/"
+});
+
+
+export { catApi, newsApi, hpApi };
