@@ -2,41 +2,42 @@ import { useEffect, useState } from "react";
 import Header from "../../components/header";
 import { newsApi } from "../../service/api";
 import Search from './../../components/search/index';
+import CardNews from './../../components/cardnews/index';
 
-//TODO: card, paginar, estilizar, icone para o link
+//TODO: paginar e estilizar
 const News = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
+  const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   newsApi.get(`/everything?q=${search}&sortBy=popularity`)
-  //     .then((response) => setData(response.data.articles))
-  //     .catch((err) => {
-  //       console.error("Ocorreu um erro:" + err);
-  //     });
-  // }, [search]);
-
-  // if (!data) {
-  //   return <div>Carregando...</div>;
-  // }
-
-  //TODO: testar o search
   const fetchNews = (search) => {
       newsApi.get(`/everything?q=${search}&sortBy=popularity`)
       .then((response) => setData(response.data.articles))
       .catch((err) => {
+        setError("Não foi possível obter as notícias. Tente novamente mais tarde.");
         console.error("Ocorreu um erro:" + err);
       });
   };
 
   useEffect(() => {
-      {search == '' ? "a" : search }
-      fetchNews(search);
+    if (search === '') {
+      setSearch('a'); 
+   }
+   fetchNews(search);
   },[search]);
 
   const handleSearch = (search) => {
     setSearch(search);
   }
+
+  //TODO:Melhorar
+  if (error) {
+    return <h1>{error}</h1>; 
+  }
+
+  // if (!data) {
+  //   return <h1>Carregando...</h1>; 
+  // }
 
   return (
     <>
@@ -45,16 +46,11 @@ const News = () => {
         <div>
           <div>
             <Search send={handleSearch} />
-            <h1>{search}</h1>
           </div>
           {data.map((article, index) => (
             <div key={index} className="h-65 w-4/5 shadow-md rounded-md flex flex-col p-2">
-              <h3>{article.title !== "[Removed]" ? article.title : "Sem título" }</h3>
-              <p>Author Name: {article.author ?? "Não identificado"}</p>
-              <p>Data de Publicação: {article.publishedAt}</p>
-              <p>Ler noticia: {article.url}</p>
+              <CardNews data={article} index={index} />
             </div>
-            // <cardnews key={index} data={article} />
           ))}
         </div>
       </div>
