@@ -13,7 +13,10 @@ const Header = () => {
     { id: 1, text: "Home", path: "/" }, 
     { id: 2, text: "Cats", path: "/cats" },
     { id: 3, text: "News", path: "/news" },
-    { id: 4, text: "HP", path: "/hp" }
+    { id: 4, text: "HP", path: "/hp" },
+    {id: 5, text: "Chart", path: "/chart"},
+    {id: 6, text: "input", path: "/input"},
+    {id: 7, text: "table", path: "/table"}
   ];
 
   return (

@@ -1,0 +1,34 @@
+.demo{
+    background-color: blue;
+}
+
+/* <div  id="demo-container">
+        <Slider
+      defaultValue={30}
+    //   sx={{
+    //     width: 300,
+    //     color: 'success.main',
+    //     '& .MuiSlider-thumb': {
+    //       borderRadius: '1px',
+    //     },
+    //   }}
+    />
+            </div>
+
+sx={{
+    width: 300,
+    color: 'success.main',
+    '& .MuiSlider-thumb': {
+      borderRadius: '1px',
+    },
+  }} */
+
+#demo-container{
+  width: 300px;
+  background-color: red;
+}
+
+#demo-container .MuiSlider-root {
+    border-radius: 1px;
+    color: yellow;
+  }

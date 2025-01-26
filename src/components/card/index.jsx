@@ -1,8 +1,8 @@
 const Card = ({ dados }) => {
   return (
     <>
-      <div className="h-65 w-4/5 bg-white shadow-md rounded-md flex flex-col p-2">
-        <img src={dados.url} alt="Imagem" className="w-full h-full" />
+      <div className="bg-white p-4 rounded-md shadow-md text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl w-full h-auto">
+        <img src={dados.url} alt="Imagem" className="w-full h-full object-cover" />
       </div>
     </>
   );

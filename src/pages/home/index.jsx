@@ -14,15 +14,15 @@ const Home = () => {
       });
   }, []);
 
-  if (!data) {
-    return <div>Carregando...</div>;
-  }
+  // if (!data) {
+  //   return <div>Carregando...</div>;
+  // }
 
   return (
     <>
-      <div className="w-full h-full bg-blue-200 fixed">
+      <div className="bg-blue-200 fixed w-screen h-screen">
         <Header />
-          <div className="grid grid-cols-5 gap-1 ml-10 mt-5 mb-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4 m-5">
             {data.map((id) => (
               <Card key={id} dados={id} />
             ))}
